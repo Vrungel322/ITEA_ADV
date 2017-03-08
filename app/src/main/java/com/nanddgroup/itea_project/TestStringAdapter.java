@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Created by Vrungel on 16.02.2017.
  */
 
-public class TestStringAdapter extends RecyclerView.Adapter<TestStringAdapter.CurrencyViewHolder> {
+public class TestStringAdapter extends RecyclerView.Adapter<TestStringAdapter.TestStringViewHolder> {
   private ArrayList<String> mExchangeEntityArrayList = new ArrayList<>();
   private LayoutInflater inflater;
   private Context mContext;
@@ -28,12 +28,12 @@ public class TestStringAdapter extends RecyclerView.Adapter<TestStringAdapter.Cu
   }
 
   @Override
-  public TestStringAdapter.CurrencyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public TestStringViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View v = inflater.inflate(R.layout.currency_list_item, parent, false);
-    return new CurrencyViewHolder(v);
+    return new TestStringViewHolder(v);
   }
 
-  @Override public void onBindViewHolder(TestStringAdapter.CurrencyViewHolder holder, int position) {
+  @Override public void onBindViewHolder(TestStringViewHolder holder, int position) {
     holder.tvText.setText(String.valueOf(mExchangeEntityArrayList.get(position)));
     addAnimation(holder, position);
   }
@@ -42,12 +42,12 @@ public class TestStringAdapter extends RecyclerView.Adapter<TestStringAdapter.Cu
     return mExchangeEntityArrayList.size();
   }
 
-  @Override public void onViewDetachedFromWindow(CurrencyViewHolder holder) {
+  @Override public void onViewDetachedFromWindow(TestStringViewHolder holder) {
     super.onViewDetachedFromWindow(holder);
     holder.itemView.clearAnimation();
   }
 
-  private void addAnimation(CurrencyViewHolder holder, int position) {
+  private void addAnimation(TestStringViewHolder holder, int position) {
     Animation animation = AnimationUtils.loadAnimation(mContext,
         (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
     holder.itemView.startAnimation(animation);
@@ -59,10 +59,10 @@ public class TestStringAdapter extends RecyclerView.Adapter<TestStringAdapter.Cu
     notifyItemInserted(getItemCount());
   }
 
-  static class CurrencyViewHolder extends RecyclerView.ViewHolder {
+  static class TestStringViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tvText) TextView tvText;
 
-    CurrencyViewHolder(View view) {
+    TestStringViewHolder(View view) {
       super(view);
       ButterKnife.bind(this, view);
     }
