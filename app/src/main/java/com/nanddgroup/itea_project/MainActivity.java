@@ -1,5 +1,6 @@
 package com.nanddgroup.itea_project;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
   @BindView(R.id.fabSend) FloatingActionButton fabSend;
@@ -30,5 +32,10 @@ public class MainActivity extends AppCompatActivity {
     for (int i = 0; i<100; i++){
       mTestStringAdapter.addCurrencyEntity("lorem");
     }
+  }
+
+  @OnClick(R.id.fabSend)
+  public void fabSendClicked(){
+    startActivity(new Intent(MainActivity.this, ActivityFirst.class));
   }
 }
